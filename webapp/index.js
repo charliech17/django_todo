@@ -1,4 +1,4 @@
-const btnId = document.getElementById('getTodo');
+// const btnId = document.getElementById('getTodo');
 const todoListId = document.getElementById('todoList');
 const inputId = document.getElementById('todoInput');
 const addBtnId = document.getElementById('addTodo');
