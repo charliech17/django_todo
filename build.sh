@@ -4,6 +4,7 @@ set -o errexit
 
 # Modify this line as needed for your package manager (pip, poetry, etc.)
 pipenv install
+pipenv shell
 
 # Convert static asset files
 python manage.py collectstatic --no-input
