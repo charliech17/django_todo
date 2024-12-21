@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-tao9)%*$da00$kx%h#h0qkre9eke%em_+ud^((%p!8zc$#nyjt
 load_dotenv()
 DEBUG = os.environ.get('DEBUG', 'FALSE') == 'True'
 
-ALLOWED_HOSTS = ['*'] if DEBUG else ['https://*.onrender.com']
+ALLOWED_HOSTS = ['*'] if DEBUG else [os.environ.get('HOST', '')]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
