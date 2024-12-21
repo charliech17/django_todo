@@ -26,15 +26,15 @@ SECRET_KEY = 'django-insecure-tao9)%*$da00$kx%h#h0qkre9eke%em_+ud^((%p!8zc$#nyjt
 
 # SECURITY WARNING: don't run with debug turned on in production!
 load_dotenv()
-DEBUG = os.environ.get('DEBUG', 'FALSE') == 'True'
+DEBUG = os.getenv('TODO_DEBUG') == 'YES'
 
-ALLOWED_HOSTS = ['*'] if DEBUG else [os.environ.get('HOST', '')]
+ALLOWED_HOSTS = [] if DEBUG else [os.getenv('TODO_HOST')]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
     "http://127.0.0.1:5500",
     "http://localhost:5173"
-]
+] if DEBUG else []
 
 
 # Application definition

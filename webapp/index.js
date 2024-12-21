@@ -7,32 +7,47 @@ let todoData = []
 // const apiBaseUrl = 'http://localhost:8000';
 const apiBaseUrl = '';
 
-fetch(`${apiBaseUrl}/api/todo/`)
-    .then(res => res.json())
-    .then(data => {
-        todoData = data;
-        renderTodoList(todoData);
-    });
+function initPage() {
+    apiFetchTodo();
+    handleCreateTodoClick();
+}
 
-addBtnId.addEventListener('click', (event) => {
-    event.preventDefault();
-    
-    const content = inputId.value;
 
-    inputId.value = '';
-    fetch(`${apiBaseUrl}/api/todo/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ content }),
-    })
+function apiFetchTodo() {
+    fetch(`${apiBaseUrl}/api/todo/`)
         .then(res => res.json())
         .then(data => {
-            todoData.push(data);
+            todoData = data;
             renderTodoList(todoData);
         });
-});
+}
+
+function handleCreateTodoClick() {
+    addBtnId.addEventListener('click', (event) => {
+        event.preventDefault();
+        
+        const content = inputId.value;
+
+        if (!content) {
+            alert('請輸入待辦事項');
+            return;
+        }
+    
+        inputId.value = '';
+        fetch(`${apiBaseUrl}/api/todo/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ content }),
+        })
+            .then(res => res.json())
+            .then(data => {
+                todoData.push(data);
+                renderTodoList(todoData);
+            });
+    });
+}
 
 function renderTodoList(todoData) {
     todoListId.innerHTML = '';
@@ -65,3 +80,5 @@ function renderTodoList(todoData) {
         todoListId.appendChild(li);
     });
 }
+
+initPage();
