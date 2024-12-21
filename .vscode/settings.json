@@ -1,0 +1,10 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#472132",
+        "titleBar.activeBackground": "#632F46",
+        "titleBar.activeForeground": "#FCF9FA"
+    },
+    "liveServer.settings.ignoreFiles": [
+       "db.sqlite3",
+    ]
+}
